@@ -1,0 +1,152 @@
+<head>
+    <title>Asignar sanitarios</title>
+
+
+    <link rel="shortcut icon" href="img/OSAVITO.png"/>
+    <link rel="stylesheet" href="css/960_24_col.css" type="text/css" />
+    <link rel="stylesheet" href="css/dav-mat.css" type="text/css" media="screen"  />
+    <link rel="stylesheet" href="css/estilos.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/protax-reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/snt-gmb-forms.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/snt-gmb-xtras.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/snt-login.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/snt-modulo-cajas-2.css" type="text/css" />
+    <link rel="stylesheet" href="css/snts-logado.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/text.css" type="text/css" media="screen" />
+
+
+        <script 
+        type="text/javascript" src="js/ValidarTiempoReal.js">
+        </script>
+</head>
+<body>
+    <div id="container" class="container_24">
+        <div id="logo" class="grid_4">
+            <img src="img/OSAVITO.png" width="120" height="130"
+                 alt="OsaVito07 Logo" style="margin-left:10px;"/>
+        </div>
+        <div class="grid_20">
+
+          <p id="tagline">
+               OsaVito07 - Profesionales Sanitarios
+            </p>
+
+        </div>
+        <div id="logout" class="grid_20">
+
+
+
+            &nbsp;
+
+
+        </div>
+        <div id="mainmenug" class="grid_20">
+            <ul>
+                <!-- Secciones -->
+
+
+
+             
+                <li><a href='altaSanitarios.html' id ='mainmenugcurrent'><span>Alta sanitarios</span></a></li>
+
+
+
+
+                <!-- /Secciones -->
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div id="sntmenucontent">
+            <!-- Menu -->
+            <div id='menu' class='grid_4'><div id='menutheme5'><ul>
+                        <li><a href='index.html'>Login</a></li>
+    
+                    </ul></div></div> 
+
+            <!-- /Menu -->
+            <div class="grid_20">
+                <div class="sntcontent" id="contenttheme9">
+                    <div id="sectioncab">
+                        <h1>Administracion de OsaVito07</h1>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="contentborde">
+                        <div id="webcontentcol">
+                            <div class="grid_19">
+                                <h2>Alta de profesionales sanitarios</h2>
+                                <div class="clear2"></div>
+                                <p>Registre aqui a sus profesionales sanitarios.</p>
+                                
+                                <form id="formDatos" action="/ProfesionalesSanitarios/medicos/publico/altaProfesionales" class="js-form-validation form-type-a" method="get">
+                                    <div id="errores">
+
+                                    </div>
+                                    <input id="formulario" name="formulario" value="alta" type="hidden" />
+                                    <div class="clear"></div>
+                                    <p>* TODOS los datos son obligatorios</p>
+                                    <div class="clear"></div>
+                                    <p class="form-caption">Datos del paciente</p>
+                                    
+                                    Nombre: <br />
+                                    <br />
+                                    TIS:
+                                  
+                                   
+                                   <!--
+                                    <div class="grid_6 fecha-nacimiento">
+                                        <p>Fecha: <br />
+                                            <input type="date" name="fecha" id="fecha" required/>
+                                    </div>
+                                    <div class="grid_3">
+                                        <p>Sexo: <br />
+                                           <input type="radio" name="radioSexo" value="H" required/>Hombre
+                                           <br />
+                                           <input type="radio" name="radioSexo" value="M" required/>Mujer 
+                                           
+                                    </div> -->
+                                    <div class="clear2"></div>
+                                    <p class="form-caption">Cita previa</p>
+                                    
+                                    <div class="grid_7">
+                                        <p>Tipo de sanitario:
+                                            <select name="tiposanitario" id="tiposanitario" >
+                                            <option value="01">Medico/a</option>  
+                                            <option value="02">Enfermero/a</option>
+                                            <option value="03">Matron/a</option>  
+                                            </select>     
+                                    </div>
+                                    
+                                    <div class="grid_3">
+                                        <p>Cita: <br />
+                                         
+                                            <!-- aqui iria el num de la cita -->
+                                           
+                                    </div>
+                                    
+                                    <p>Fecha y hora de la cita: <br />
+                                        <input type="datetime-local" name="tiempolocal" id="tiempolocal" />
+                                    <div class="clear2"></div>
+                                    <div class="action_buttons center">
+                                        <input id="btnalta" name="dardealta" value="Confirmar cita" class="btngo" type="submit" />
+                                        <input id="btlimpiar" name="limpiar" value="Limpiar" class="btngo" type="reset" />
+                                    </div>
+                                    <div style="display: none;"><input type="hidden" name="_sourcePage" value="Roo1ruVK35-_j34lwgxH4cto8i3O-iSEVbJbAJjhZ062li6LzStSNXkpuP8C7g_ugNY3hubWgMUMxqT-BzMnKO32RTMYkt3yTAxYYDPX1zlx-nK7QuuFIw==" /><input type="hidden" name="__fp" value="5ZDrEucaBneZdHKsx-55JM4dv6jAVsx0xztX8W8FUq4YftCat4h8e8yFfX2TRVBBc9InxRh21EcbPevbNIFlpU189e7WB1vxKd9s0KUzmK076YdkRnveIpCZs1oPODf14hcHjw0k-_yYNHBvq6eHv9WgI8NVlLz3J0eYlqbTXg4qP3G35c6buwZRfsH4r7oHI2SF7NFtMKu-MqYBErQT8ev-73rBceh9rZC9AdMTnMnslFzUpngrguWg0fNe-GXWD4yCzXXf05CyQMe__1DvuZPA-HO01sTnJ5XgybhSylFuWz8fHecvuI9Cf7vKOlxmShbXyw8pWaOLGBDHWQipOpi5CnbqWgl8U7qaU8xg7BSSp0gARsIUIA==" /></div></form>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div id="footer" class="grid_20">
+                    <p>
+
+           
+                        <a target="_blank" href="http://www.ehu.eus"><span class="pie">UPV/EHU</span></a>
+                        | 2017 &copy Grupo07 ADSI <br />
+                        <br />
+                        Denis Ionut Stefanescu <br />
+                        Koldo Perez de San Roman
+                    </p>
+                    <p><span class="pie">&nbsp;</span></p>
+                </div>
+
+

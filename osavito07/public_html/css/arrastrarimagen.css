@@ -1,7 +1,8 @@
 #caja {
-    margin: 10px;
-    width: 350px;
-    height: 350px;
+    margin-top: 80px;
+    margin-left: 25px;
+    width: 150px;
+    height: 150px;
     border: 5px dashed gray;
     border-radius: 8px;
     background: rgb(230,230,230);

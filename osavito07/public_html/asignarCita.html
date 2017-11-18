@@ -1,5 +1,5 @@
 <head>
-    <title>Asignar sanitarios</title>
+    <title>Asignar cita</title>
 
 
     <link rel="shortcut icon" href="img/OSAVITO.png"/>
@@ -17,6 +17,12 @@
 
         <script 
         type="text/javascript" src="js/ValidarTiempoReal.js">
+        </script>
+        <script 
+            type="text/javascript" src="js/sesionstoragepaciente.js">
+        </script>
+        <script 
+            type="text/javascript" src="js/borrarStorage.js">
         </script>
 </head>
 <body>
@@ -47,7 +53,7 @@
 
 
              
-                <li><a href='altaSanitarios.html' id ='mainmenugcurrent'><span>Alta sanitarios</span></a></li>
+                <li><a href='asignarCita.html' id ='mainmenugcurrent'><span>Asignar cita</span></a></li>
 
 
 
@@ -59,7 +65,7 @@
         <div id="sntmenucontent">
             <!-- Menu -->
             <div id='menu' class='grid_4'><div id='menutheme5'><ul>
-                        <li><a href='referenciaForm.html'>Login</a></li>
+                         <li><a href='index.html' onclick='eliminarSessionStorage()'>Volver a inicio (cerrar sesion)</a></li>
     
                     </ul></div></div> 
 
@@ -73,11 +79,11 @@
                     <div id="contentborde">
                         <div id="webcontentcol">
                             <div class="grid_19">
-                                <h2>Alta de profesionales sanitarios</h2>
+                                <h2>Asignar cita previa</h2>
                                 <div class="clear2"></div>
-                                <p>Registre aqui a sus profesionales sanitarios.</p>
+                                <p>Rellene los datos de su cita.</p>
                                 
-                                <form id="formDatos" action="/ProfesionalesSanitarios/medicos/publico/altaProfesionales" class="js-form-validation form-type-a" method="get">
+                                <form id="formDatos" class="js-form-validation form-type-a" method="get">
                                     <div id="errores">
 
                                     </div>
@@ -87,9 +93,9 @@
                                     <div class="clear"></div>
                                     <p class="form-caption">Datos del paciente</p>
                                     
-                                    Nombre: <br />
-                                    <br />
-                                    TIS:
+                                    <section id="cajadatos">
+                                     <input id="btninfo" name="mostrar info" value="Mostrar mi informacion" class="btngo" type="button" onclick="mostrar()"/>
+                                     </section>
                                   
                                    
                                    <!--
@@ -109,7 +115,7 @@
                                     
                                     <div class="grid_7">
                                         <p>Tipo de sanitario:
-                                            <select name="tiposanitario" id="tiposanitario" >
+                                            <select name="tiposanitario" id="tiposanitario">
                                             <option value="01">Medico/a</option>  
                                             <option value="02">Enfermero/a</option>
                                             <option value="03">Matron/a</option>  
@@ -124,10 +130,11 @@
                                     </div>
                                     
                                     <p>Fecha y hora de la cita: <br />
-                                        <input type="datetime-local" name="tiempolocal" id="tiempolocal" />
+                                        <input type="datetime-local" name="tiempolocal" id="tiempolocal" required/>
+                                        
                                     <div class="clear2"></div>
                                     <div class="action_buttons center">
-                                        <input id="btnalta" name="dardealta" value="Confirmar cita" class="btngo" type="submit" />
+                                        <input id="btnalta" name="dardealta" value="Confirmar cita" class="btngo" type="button" onclick='enviarAsignarCita()'/>
                                         <input id="btlimpiar" name="limpiar" value="Limpiar" class="btngo" type="reset" />
                                     </div>
                                     <div style="display: none;"><input type="hidden" name="_sourcePage" value="Roo1ruVK35-_j34lwgxH4cto8i3O-iSEVbJbAJjhZ062li6LzStSNXkpuP8C7g_ugNY3hubWgMUMxqT-BzMnKO32RTMYkt3yTAxYYDPX1zlx-nK7QuuFIw==" /><input type="hidden" name="__fp" value="5ZDrEucaBneZdHKsx-55JM4dv6jAVsx0xztX8W8FUq4YftCat4h8e8yFfX2TRVBBc9InxRh21EcbPevbNIFlpU189e7WB1vxKd9s0KUzmK076YdkRnveIpCZs1oPODf14hcHjw0k-_yYNHBvq6eHv9WgI8NVlLz3J0eYlqbTXg4qP3G35c6buwZRfsH4r7oHI2SF7NFtMKu-MqYBErQT8ev-73rBceh9rZC9AdMTnMnslFzUpngrguWg0fNe-GXWD4yCzXXf05CyQMe__1DvuZPA-HO01sTnJ5XgybhSylFuWz8fHecvuI9Cf7vKOlxmShbXyw8pWaOLGBDHWQipOpi5CnbqWgl8U7qaU8xg7BSSp0gARsIUIA==" /></div></form>

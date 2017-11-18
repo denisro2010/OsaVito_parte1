@@ -79,7 +79,7 @@ function enviarAsignarPaciente() {
     var numcolegiado = document.getElementById("cnNumColegiado");
     
     if (tis.validity.valid && numcolegiado.validity.valid) {
-        alert('El paciente se ha asignado correctamente')
+        alert('El paciente se ha asignado correctamente');
         location.href="http://localhost:8383/osavito07/asignarPacientes.html";
     }else{
         alert('Algun dato introducido no es correcto');

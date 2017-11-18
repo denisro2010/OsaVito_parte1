@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>OSAVITO DEL GRUPO XX</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/arrastrarimagen.css">
+        <script src="js/arrastrarimagen.js"></script>
+    </head>
+    <body>
+        <section>
+            <form name="miformulario" id="miformulario" method="get" action="">
+                <p>Nombre:<input type="text" name="nombre" id="nombre" />
+                <p>Email:<input type="email" name="miemail" id="miemail" required="" />
+                <p>Buscar:<input type="search" name="busqueda" id="busqueda" 
+                       placeholder="Escriba su búsqueda" />
+                <p>Telefono:<input type="tel" name="telefono" id="telefono"/>
+                <p>Numero:<input type="number" name="numero" id="numero" min="0" max="10" step="5" />
+                <p>Rango:<input type="range" name="numero2" id="numero2" min="0" max="10" step="5" />
+                <p>Fecha:<input type="date" name="fecha" id="fecha" />
+                <p>Hora:<input type="time" name="hora" id="hora" />
+                <p>Fecha y hora local:<input type="datetime-local" name="tiempolocal" id="tiempolocal" />
+                <p>Código postal:<input pattern="[0-9]{5}" name="codigopostal" id="codigopostal"  
+                       title="Inserta los 5 números de su código postal" />
+                <p>Elige tu sexo:
+                <input type="radio" name="radioSexo" value="H" />Hombre
+                <input type="radio" name="radioSexo" value="M" />Mujer
+                <p>País/es favorito a viajar:
+                <input type="checkbox" name="chkViajes" value="Italia" /> Italia
+                <input type="checkbox" name="chkViajes" value="Francia" /> Francia
+                <input type="checkbox" name="chkViajes" value="Gran Bretaña" /> Gran Bretaña
+                <p>Elige número:
+                <datalist id="informacion">
+                        <option value="667788990" label="Móvil 1">
+                        <option value="678012345" label="Móvil 2">
+                </datalist>
+                    <input type="tel" name="movil" id="movil" list="informacion" placeholder="Elige un móvil..." />
+                <p>¿Cuántos hijos?
+                    <select name="listaValores" id="listaValores" size="4" multiple="">
+                        <option value="0">0 hijos</option>
+                        <option value="1">1 hijo</option>
+                        <option value="2">2 hijos</option>
+                        <option value="3">3 hijos</option>
+                        <option value="4">4 hijos</option>
+                </select> 
+                <div id="caja">
+                </div>
+                <p><input type="submit" value="Enviar" />
+                   <input type="reset" value="BORRAR" />
+            </form>
+        </section>
+    </body>
+</html>

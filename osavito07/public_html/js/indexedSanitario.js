@@ -7,7 +7,7 @@ function iniciar(){
 	
 	boton.addEventListener("click",agregarobjeto, false);
         
-	var solicitud=indexedDB.open("OsaVito07");
+	var solicitud=indexedDB.open("OsaVito07", 1);
 	
 	solicitud.onsuccess=function(e){
 		bd=e.target.result;				
@@ -32,6 +32,9 @@ function agregarobjeto(){
 	
 	var almacen=transaccion.objectStore("sanitarios");
 
+       var valid = document.formDatos.checkValidity();
+        
+        if(valid){   
 	var agregar=almacen.add({cnNumColegiado: cnNumColegiado, gnombre: gnombre, tiposanitario: tiposanitario});
              
         agregar.addEventListener("success", mostrar, false);
@@ -40,7 +43,8 @@ function agregarobjeto(){
          alert(agregar.error.name + '\n\n' + agregar.error.message);
          location.href="http://localhost:8383/osavito07/altaSanitarios.html";
          };
-         
+     }
+     
 	document.getElementById("cnNumColegiado").value="";
 	
 	document.getElementById("gnombre").value="";
@@ -68,7 +72,7 @@ function mostrarDatos(e){
 	
 	if(cursor){
 		
-		zonadatos.innerHTML+="<div>" + cursor.value.cnNumColegiado + " - " + cursor.value.gnombre + " - " + cursor.value.tiposanitario + "</div>";
+		//zonadatos.innerHTML+="<div>" + cursor.value.cnNumColegiado + " - " + cursor.value.gnombre + " - " + cursor.value.tiposanitario + "</div>";
 		
 		cursor.continue();
 		

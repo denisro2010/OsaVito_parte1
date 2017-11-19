@@ -1,41 +1,25 @@
+window.addEventListener("load", iniciar, false);
 
-function controlarNombre() {
-    var elemento = document.getElementById("gnombre");
+function iniciar(){
+    document.formDatos.addEventListener("invalid", validacion, true);
+    document.formDatos.addEventListener("input", controlar, false);
+    
+    document.getElementById("btnloginpac").addEventListener("click", enviarLoginPaciente, false);
+}
+
+function validacion(e) {
+    var elemento = e.target;
+    elemento.style.background = '#FFDDDD';
+}
+
+function controlar(e) {
+    var elemento = e.target;
     if (elemento.validity.valid) {
         elemento.style.background = '#FFFFFF';
     } else {
         elemento.style.background = '#FFDDDD';
     }
 }
-
-function controlarNumColegiado() {
-    var elemento = document.getElementById("cnNumColegiado");
-    if (elemento.validity.valid) {
-        elemento.style.background = '#FFFFFF';
-    } else {
-        elemento.style.background = '#FFDDDD';
-    }
-}
-
-function controlarTIS() {
-    var elemento = document.getElementById("TIS");
-    if (elemento.validity.valid) {
-        elemento.style.background = '#FFFFFF';
-    } else {
-        elemento.style.background = '#FFDDDD';
-    }
-}
-
-function controlarTelefono() {
-    var elemento = document.getElementById("telefono");
-    if (elemento.validity.valid) {
-        elemento.style.background = '#FFFFFF';
-    } else {
-        elemento.style.background = '#FFDDDD';
-    }
-}
-
-
 
 function enviarLoginPaciente() {
     var elemento = document.getElementById("TIS");
@@ -96,15 +80,6 @@ function enviarAsignarCita() {
         location.href="http://localhost:8383/osavito07/index.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
-    }
-}
-
-function controlarNumCita() {
-    var elemento = document.getElementById("numCita");
-    if (elemento.validity.valid) {
-        elemento.style.background = '#FFFFFF';
-    } else {
-        elemento.style.background = '#FFDDDD';
     }
 }
 

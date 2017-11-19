@@ -83,7 +83,7 @@
                                 <div class="clear2"></div>
                                 <p>Rellene los datos de su cita.</p>
                                 
-                                <form id="formDatos" class="js-form-validation form-type-a" method="get">
+                                <form name="formDatos" id="formDatos" class="js-form-validation form-type-a" method="get">
                                     <div id="errores">
 
                                     </div>
@@ -95,7 +95,7 @@
                                     
                                     <div class="grid_6">
                                         <label> TIS <br />
-                                            <input pattern="[0-9]{8}" id="TIS" maxlength="8" name="numTIS" class="numerico" type="text" onChange="controlarTIS()" required />
+                                            <input pattern="[0-9]{8}" id="TIS" maxlength="8" name="numTIS" class="numerico" type="text" required />
                                         </label>
                                    </div>
                                   
@@ -117,7 +117,7 @@
                                     
                                     <div class="grid_6">
                                         <label> Numero de la cita <br />
-                                            <input pattern="[0-9]{5}" id="numCita" maxlength="5" name="numCita" class="numerico" type="text" onchange='controlarNumCita()' required />
+                                            <input pattern="[0-9]{5}" id="numCita" maxlength="5" name="numCita" class="numerico" type="text" required />
                                         </label>
                                    </div>
                                     

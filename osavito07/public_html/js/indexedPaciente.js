@@ -1,5 +1,5 @@
 // JavaScript Document
-var bd = null;
+var bd;
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
@@ -37,6 +37,9 @@ function agregarobjeto(){
 	
 	var almacen=transaccion.objectStore("pacientes");
         
+        var valid = document.formDatos.checkValidity();
+        
+        if(valid){
 	       var agregar=almacen.add({TIS: TIS, gnombre: gnombre, telefono: telefono, fecha: fecha, hombre: hombre, mujer: mujer});
                agregar.addEventListener("success", mostrar, false);
                
@@ -44,7 +47,7 @@ function agregarobjeto(){
                alert(agregar.error.name + '\n\n' + agregar.error.message);
                location.href="http://localhost:8383/osavito07/altaPacientes.html";
                };
-         
+           }
              
 	document.getElementById("TIS").value="";
 	
@@ -79,7 +82,7 @@ function mostrarDatos(e){
 	
 	if(cursor){
 		
-		zonadatos.innerHTML+="<div>" + cursor.value.TIS + " - " + cursor.value.gnombre + " - " + cursor.value.telefono +" - " + cursor.value.fecha + " - " +cursor.value.hombre +" - " + cursor.value.mujer + "</div>";
+		//zonadatos.innerHTML+="<div>" + cursor.value.TIS + " - " + cursor.value.gnombre + " - " + cursor.value.telefono +" - " + cursor.value.fecha + " - " +cursor.value.hombre +" - " + cursor.value.mujer + "</div>";
 		
 		cursor.continue();
 		

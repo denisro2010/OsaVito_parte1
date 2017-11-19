@@ -2,7 +2,7 @@
     <title>Asignar cita</title>
 
 
-    <link rel="shortcut icon" href="img/OSAVITO.png"/>
+    <link rel="shortcut icon" href="img/favicon.png"/>
     <link rel="stylesheet" href="css/960_24_col.css" type="text/css" />
     <link rel="stylesheet" href="css/dav-mat.css" type="text/css" media="screen"  />
     <link rel="stylesheet" href="css/estilos.css" type="text/css" media="screen" />
@@ -28,12 +28,12 @@
 <body>
     <div id="container" class="container_24">
         <div id="logo" class="grid_4">
-            <img src="img/OSAVITO.png" width="120" height="130"
-                 alt="OsaVito07 Logo" style="margin-left:10px;"/>
+            <img src="img/OSAVITO.png" width="240" height="96"
+                 alt="OsaVito07 Logo"/>
         </div>
         <div class="grid_20">
 
-          <p id="tagline">
+          <p id="tagline" style="margin-left:50px;">
                OsaVito07 - Profesionales Sanitarios
             </p>
 
@@ -131,7 +131,17 @@
                                     
                                     <p>Fecha y hora de la cita: <br />
                                         <input type="datetime-local" name="tiempolocal" id="tiempolocal" required/>
+                                        <!-- dentro del input se podría poner max y min para definir la hora minima o maxima permitidas
+                                        step="900" para pasar de 15 en 15 minutos
                                         
+                                        Esta opcion de separar la fecha de la hora para en un javascript comprobar si son validas:
+                                        
+                                         <input type="date" name="fecha" id="tiempolocal" required/>
+                                        <input type="time" name="hora" id="horita" min="09:15" max="10:00" step="900" required/>
+                                        
+                                        seria util para lo de la fecha de nacimiento
+                                        
+                                        -->
                                     <div class="clear2"></div>
                                     <div class="action_buttons center">
                                         <input id="btnalta" name="dardealta" value="Confirmar cita" class="btngo" type="button" onclick='enviarAsignarCita()'/>
@@ -148,11 +158,11 @@
 
            
                         <a target="_blank" href="http://www.ehu.eus"><span class="pie">UPV/EHU</span></a>
-                        | 2017 &copy Grupo07 ADSI <br />
-                        <br />
-                        Denis Ionut Stefanescu <br />
-                        Koldo Perez de San Roman
-                    </p>
+                        | 2017 &copy Grupo07 ADSI
+                        <div id="logobottom" class="grid_4">
+                            <img src="img/DENKOL.png" width="160" height="100"
+                                alt="DENKOL Logo" style="margin-left:325px; margin-top:-10px"/>
+                        </div>
                     <p><span class="pie">&nbsp;</span></p>
                 </div>
 

@@ -19,16 +19,26 @@ function login(){
     var objectStore = transaccion.objectStore("pacientes");
     objectStore.openCursor().onsuccess = function(event) {
     var cursor = event.target.result;
+    var existe = false;
       
       if (cursor) {
-          if(cursor.value.TIS !== document.getElementById("TIS").value || cursor.value.fecha !== document.getElementById("fechanacpac").value){
-              alert("El usuario que has introducido no esta dado de alta en OsaVito07"); 
-              location.href="http://localhost:8383/osavito07/loginPaciente.html";
+          //alert('TIS: ' + cursor.value.TIS + ' fechanac: ' + cursor.value.fecha);
+          if(cursor.value.TIS === document.getElementById("TIS").value && cursor.value.fecha === document.getElementById("fechanacpac").value){
+              //alert('TIS: ' + cursor.value.TIS + ' fechanac: ' + cursor.value.fecha);
+              existe = true;
           }
-          else if(cursor.value.TIS === document.getElementById("TIS").value && cursor.value.fecha === document.getElementById("fechanacpac").value){
-              location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+          else{
+          cursor.continue();
           }
-            cursor.continue();
+      }
+      else {
+            if(existe){
+                location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+            }
+            else{
+               alert("El usuario que has introducido no esta dado de alta en OsaVito07"); 
+               location.href="http://localhost:8383/osavito07/loginPaciente.html"; 
+           }
       }
     };
 }

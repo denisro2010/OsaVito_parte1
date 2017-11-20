@@ -38,15 +38,26 @@ function agregarobjeto(){
 	var almacen=transaccion.objectStore("pacientes");
         
         var valid = document.formDatos.checkValidity();
+        var agregar;
         
         if(valid){
-	       var agregar=almacen.add({TIS: TIS, gnombre: gnombre, telefono: telefono, fecha: fecha, hombre: hombre, mujer: mujer});
+               if(document.getElementById('hombre').checked){
+	       agregar=almacen.add({TIS: TIS, gnombre: gnombre, telefono: telefono, fecha: fecha, hombre: hombre});
                agregar.addEventListener("success", mostrar, false);
                
                agregar.onerror = function(e) {
                alert(agregar.error.name + '\n\n' + agregar.error.message);
                location.href="http://localhost:8383/osavito07/altaPacientes.html";
                };
+               }
+               else if(document.getElementById('mujer').checked){
+                   agregar=almacen.add({TIS: TIS, gnombre: gnombre, telefono: telefono, fecha: fecha, mujer: mujer});
+                   agregar.addEventListener("success", mostrar, false);
+                   agregar.onerror = function(e) {
+                   alert(agregar.error.name + '\n\n' + agregar.error.message);
+                   location.href="http://localhost:8383/osavito07/altaPacientes.html";
+               };
+               }   
            }
              
 	document.getElementById("TIS").value="";

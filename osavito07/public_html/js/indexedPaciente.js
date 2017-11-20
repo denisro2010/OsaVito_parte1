@@ -12,6 +12,10 @@ function iniciar(){
 	solicitud.onsuccess=function(e){
 		bd=e.target.result;				
 	};
+        
+        solicitud.onerror=function(e){
+		alert(solicitud.error.message);		
+	};
 	
 	solicitud.onupgradeneeded=function(e){
 		bd=e.target.result;

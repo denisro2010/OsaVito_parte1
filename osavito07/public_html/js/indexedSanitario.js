@@ -7,10 +7,14 @@ function iniciar(){
 	
 	boton.addEventListener("click",agregarobjeto, false);
         
-	var solicitud=indexedDB.open("OsaVito07", 1);
+	var solicitud=indexedDB.open("OsaVito07",1);
 	
 	solicitud.onsuccess=function(e){
 		bd=e.target.result;				
+	};
+        
+        solicitud.onerror=function(e){
+		alert(solicitud.error.message);		
 	};
 	
 	solicitud.onupgradeneeded=function(e){

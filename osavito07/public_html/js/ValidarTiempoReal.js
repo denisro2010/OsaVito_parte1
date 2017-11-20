@@ -36,7 +36,7 @@ function enviarAltaSanitario() {
     var nombresanitario = document.getElementById("gnombre");
     
     if (numcolegiado.validity.valid && nombresanitario.validity.valid) {
-        location.href="http://localhost:8383/osavito07/altaPacientes.html";
+        location.href="http://localhost:8383/osavito07/altaSanitarios.html";
     }else{
         alert('Algun dato introducido no es correcto');
     }
@@ -52,7 +52,7 @@ function enviarAltaPaciente() {
     var caja = document.getElementById("caja2");
     
     if (tis.validity.valid && tlf.validity.valid && nombre.validity.valid && fechanac.validity.valid && (hombre.validity.valid || mujer.validity.valid)) {
-        location.href="http://localhost:8383/osavito07/asignarPacientes.html";
+        location.href="http://localhost:8383/osavito07/altaPacientes.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }
@@ -63,7 +63,6 @@ function enviarAsignarPaciente() {
     var numcolegiado = document.getElementById("cnNumColegiado");
     
     if (tis.validity.valid && numcolegiado.validity.valid) {
-        alert('El paciente se ha asignado correctamente');
         location.href="http://localhost:8383/osavito07/asignarPacientes.html";
     }else{
         alert('Algun dato introducido no es correcto');

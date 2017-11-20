@@ -6,6 +6,11 @@ function iniciar(){
 	boton=document.getElementById("btnalta");
 	
 	boton.addEventListener("click",agregarobjeto, false);
+        
+        boton2=document.getElementById("btnsanitarios");
+	boton2.addEventListener("click",mostrarSanitarios, false);
+        
+        
  
         var solicitud=indexedDB.open("OsaVito07", 4);
 	
@@ -83,6 +88,35 @@ function mostrarDatos(e){
 		
 	}
 
+}
+
+function mostrarSanitarios(){
+    var cajadatos2 = document.getElementById('cajadatos2');
+    cajadatos2.innerHTML = '';
+    
+    var transaccion = bd.transaction(["pacientesYsanitarios"], "readonly");
+    var objectStore = transaccion.objectStore("pacientesYsanitarios");
+    objectStore.openCursor().onsuccess = function(event) {
+    var cursor = event.target.result;
+      
+      for (var f = 0; f < sessionStorage.length; f++) {
+        var clave = sessionStorage.key(f);
+      }
+      
+      if (cursor) {
+          if(cursor.value.TIS === clave){
+              cajadatos2.innerHTML+="<div>" + 'Numero de colegiado: '+ cursor.value.numColegiado + ' <br  /> ' +'Tipo de sanitario: '+ cursor.value.tiposanitario;
+              cajadatos2.innerHTML+='<br  />';
+              cursor.continue();
+          }
+          else{
+          cursor.continue();
+          }
+      }
+      else {
+            
+      }
+    };
 }
 
 window.addEventListener("load", iniciar, false);

@@ -13,7 +13,7 @@ function nuevoitem() {
     document.getElementById('TIS').value = '';
     document.getElementById('fechanacpac').value = '';
 }
-function mostrar() {
+function mostrarSS() {
     var cajadatos = document.getElementById('cajadatos');
     cajadatos.innerHTML = '';
     for (var f = 0; f < sessionStorage.length; f++) {

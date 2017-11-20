@@ -24,6 +24,10 @@
         <script 
             type="text/javascript" src="js/borrarStorage.js">
         </script>
+        <script 
+            type="text/javascript" src="js/indexedCita.js">
+        </script>
+        
 </head>
 <body>
     <div id="container" class="container_24">
@@ -94,7 +98,7 @@
                                     <p class="form-caption">Datos del paciente</p>
                                     
                                     <section id="cajadatos">
-                                     <input id="btninfo" name="mostrar info" value="Mostrar mi informacion" class="btngo" type="button" onclick="mostrar()"/>
+                                     <input id="btninfo" name="mostrar info" value="Mostrar mi informacion" class="btngo" type="button" onclick="mostrarSS()"/>
                                      </section>
                                   
                                    
@@ -114,7 +118,7 @@
                                     <p class="form-caption">Cita previa</p>
                                     
                                     <div class="grid_7">
-                                        <p>Tipo de sanitario:
+                                        <p>Sanitario:
                                             <select name="tiposanitario" id="tiposanitario">
                                             <option value="01">Medico/a</option>  
                                             <option value="02">Enfermero/a</option>
@@ -128,6 +132,9 @@
                                             <!-- aqui iria el num de la cita -->
                                            
                                     </div>
+                                    
+                                    <section id="zonadatos">
+                                    </section>
                                     
                                     <p>Fecha y hora de la cita: <br />
                                         <input type="datetime-local" name="tiempolocal" id="tiempolocal" required/>

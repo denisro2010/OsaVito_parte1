@@ -33,7 +33,7 @@ function agregarobjeto(){
         var tis = sessionStorage.key(f);
         }
         
-        var numcita = Math.floor((Math.random() * 10) + 1);
+        var numcita = Math.floor((Math.random() * 1000000) + 1);
         
         var fecha=document.getElementById("tiempolocal").value;
         

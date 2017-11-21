@@ -6,12 +6,16 @@ function iniciar() {
     mostrar();
 }
 function nuevoitem() {
+    var valid = document.formDatos.checkValidity();
+    
+    if(valid){
     var clave = document.getElementById('TIS').value;
     var valor = document.getElementById('fechanacpac').value;
     sessionStorage.setItem(clave, valor);
     mostrar();
     document.getElementById('TIS').value = '';
     document.getElementById('fechanacpac').value = '';
+    }
 }
 function mostrarSS() {
     var cajadatos = document.getElementById('cajadatos');

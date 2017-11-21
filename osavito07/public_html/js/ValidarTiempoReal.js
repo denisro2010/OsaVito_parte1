@@ -75,8 +75,8 @@ function enviarAsignarCita() {
 
     
     if (fecha.validity.valid) {
-        alert('Su cita se ha asignado correctamente');
-        location.href="http://localhost:8383/osavito07/index.html";
+        //alert('Su cita se ha asignado correctamente');
+       // location.href="http://localhost:8383/osavito07/index.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }
@@ -87,8 +87,8 @@ function enviarCancelarCita() {
     var tis = document.getElementById("TIS");
     
     if (cita.validity.valid && tis.validity.valid) {
-        alert('Su cita se ha cancelado correctamente');
-        location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+       // alert('Su cita se ha cancelado correctamente');
+       // location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }

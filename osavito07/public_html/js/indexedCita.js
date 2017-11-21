@@ -4,11 +4,10 @@ function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
 	boton=document.getElementById("btnalta");
-	
-	boton.addEventListener("click",agregarobjeto, false);
+	boton.addEventListener("click",guardarNumColegiado, false);
         
-        boton2=document.getElementById("btnsanitarios");
-	boton2.addEventListener("click",mostrarSanitarios, false);
+        boton2 = document.getElementById("btnsanitarios");
+	boton2.addEventListener("mousemove",mostrarSanitarios, false);
         
         
  
@@ -24,21 +23,21 @@ function iniciar(){
 	
 	solicitud.onupgradeneeded=function(e){
 		bd=e.target.result;
-		bd.createObjectStore("citas", {keyPath: "id", autoIncrement: true});
+		bd.createObjectStore("citas", {keyPath: ["tis", "fecha"]});
 	};	
 }
       
 function agregarobjeto(){
     
         for (var f = 0; f < sessionStorage.length; f++) {
-        var clave = sessionStorage.key(f);
+        var tis = sessionStorage.key(f);
         }
+        
+        var numcita = Math.floor((Math.random() * 10) + 1);
         
         var fecha=document.getElementById("tiempolocal").value;
         
         var tiposanitario=document.getElementById("tiposanitario").value;
-        
-        //FALTA EL SANITARIO
 	
 	var transaccion=bd.transaction(["citas"], "readwrite");
 	
@@ -47,17 +46,22 @@ function agregarobjeto(){
         var valid = document.formDatos.checkValidity();
         
         if(valid){
-	       var agregar=almacen.add({clave: clave, fecha: fecha, tiposanitario: tiposanitario});
+	       var agregar=almacen.add({numcita: numcita, tis: tis, fecha: fecha, tiposanitario: tiposanitario, numColegiado: numColegiado});
                agregar.addEventListener("success", mostrar, false);
                
-               agregar.onerror = function(e) {
-               alert(agregar.error.name + '\n\n' + agregar.error.message);
-               location.href="http://localhost:8383/osavito07/altaPacientes.html";
+               agregar.onsuccess = function(e){
+                   alert('La cita se ha asignado correctamente. ID de su cita: ' + numcita);
+                   location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
                };
-           }
-        
-        document.getElementById("tiempolocal").value="";
-        
+               
+               agregar.onerror = function(e) {
+               alert('Usted no puede coger una cita a la misma hora');
+               location.href="http://localhost:8383/osavito07/asignarCita.html";
+               };
+        }
+        else
+            alert('Tiene que elegir la fecha y hora de su cita');
+    
         
 }
 
@@ -106,7 +110,7 @@ function mostrarSanitarios(){
       if (cursor) {
           if(cursor.value.TIS === clave){
               cajadatos2.innerHTML+="<div>" + 'Numero de colegiado: '+ cursor.value.numColegiado + ' <br  /> ' +'Tipo de sanitario: '+ cursor.value.tiposanitario;
-              cajadatos2.innerHTML+='<br  />';
+              cajadatos2.innerHTML+='<br  />';    
               cursor.continue();
           }
           else{
@@ -119,6 +123,40 @@ function mostrarSanitarios(){
     };
 }
 
+function guardarNumColegiado(){
+    var tiposanitario=document.getElementById("tiposanitario").value;
+    var transaccion = bd.transaction(["pacientesYsanitarios"], "readonly");
+    var objectStore = transaccion.objectStore("pacientesYsanitarios");
+    objectStore.openCursor().onsuccess = function(event) {
+    var cursor = event.target.result;
+      
+      for (var f = 0; f < sessionStorage.length; f++) {
+        var clave = sessionStorage.key(f);
+      }
+      
+      if (cursor) {
+          if(cursor.value.TIS === clave){
+               if(cursor.value.tiposanitario === tiposanitario){
+                   numColegiado = cursor.value.numColegiado;
+                   agregarobjeto(numColegiado);
+               }
+              cursor.continue();
+          }
+          else{
+          cursor.continue();
+          }
+      }
+      else {
+          if(numColegiado==='-1'){
+            alert('Usetd no tiene a ese tipo de sanitario asignado o ha escogido una cita con un(a) matron(a) siendo hombre'); 
+             location.href="http://localhost:8383/osavito07/asignarCita.html";
+         }
+      }
+    };
+}
+
+
+var numColegiado = '-1';
 window.addEventListener("load", iniciar, false);
 
 

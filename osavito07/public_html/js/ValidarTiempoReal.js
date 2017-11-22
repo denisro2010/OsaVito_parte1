@@ -3,7 +3,7 @@ window.addEventListener("load", iniciar, false);
 function iniciar(){
     document.formDatos.addEventListener("invalid", validacion, true);
     document.formDatos.addEventListener("input", controlar, false);
-    
+    document.getElementById("btnalta").addEventListener("click", comprobarFechaNac, false);
     document.getElementById("btnloginpac").addEventListener("click", enviarLoginPaciente, false);
 }
 
@@ -92,4 +92,27 @@ function enviarCancelarCita() {
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }
+}
+function comprobarFechaNac(){
+    var fecha = document.getElementById("fecha");
+    var today = new Date();
+    var anyo = today.getFullYear();
+    var mes = today.getMonth() + 1;
+    var dia = today.getDate();
+    
+    if(dia<10) {
+        dia='0'+dia;
+    } 
+    if(mes<10) {
+       mes='0'+mes;
+    } 
+    var hoy = anyo + "-" + mes + "-" + dia;
+    
+    if(fecha.value < hoy){
+        alert("La fecha es anterior a hoy.");
+    }
+    else{
+        alert("Error en la fecha de nacimiento. La fecha introducida es posterior a hoy.");
+    }
+    
 }

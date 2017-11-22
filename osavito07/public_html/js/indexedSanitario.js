@@ -1,4 +1,4 @@
-// JavaScript Document
+
 var bd;
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
@@ -41,21 +41,25 @@ function agregarobjeto(){
         if(valid){   
 	var agregar=almacen.add({cnNumColegiado: cnNumColegiado, gnombre: gnombre, tiposanitario: tiposanitario});
              
-        agregar.addEventListener("success", mostrar, false);
+       // agregar.addEventListener("success", mostrar, false);
  
-         agregar.onerror = function(e) {
-         alert(agregar.error.name + '\n\n' + agregar.error.message);
-         location.href="http://localhost:8383/osavito07/altaSanitarios.html";
+         agregar.onsuccess = function (e){
+             alert('El sanitario ha sido registrado correctamente.');
+             location.href="altaSanitarios.html";
          };
-     }
+         
+         agregar.onerror = function(e) {
+         alert('El numero de colegiado que ha introducido ya esta asignado a un sanitario');
+         location.href="altaSanitarios.html";
+         };
+         }
+         else{
+           alert('Algun dato introducido es incorrecto.');
+         }
      
-	document.getElementById("cnNumColegiado").value="";
-	
-	document.getElementById("gnombre").value="";
-	
-	document.getElementById("tiposanitario").value="";
 }
 
+/*
 function mostrar(){
 	
 	zonadatos.innerHTML="";
@@ -83,7 +87,9 @@ function mostrarDatos(e){
 		
 	}
 
+
 }
+*/
 
 window.addEventListener("load", iniciar, false);
 

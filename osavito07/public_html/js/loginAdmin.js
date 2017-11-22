@@ -7,7 +7,7 @@ function go(){
     var usr=document.getElementById("usuario");
     var clv=document.getElementById("clave");
 if (usr.value==="admin" && clv.value==="admin"){ 
-        location.href="http://localhost:8383/osavito07/altaSanitarios.html";
+        location.href="altaSanitarios.html";
     } 
     else{ 
          alert("El nombre de usuario o la clave no son correctos. Pruebe de nuevo."); 

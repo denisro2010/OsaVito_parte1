@@ -47,16 +47,16 @@ function agregarobjeto(){
         
         if(valid){
 	       var agregar=almacen.add({numcita: numcita, tis: tis, fecha: fecha, tiposanitario: tiposanitario, numColegiado: numColegiado});
-               agregar.addEventListener("success", mostrar, false);
+               //agregar.addEventListener("success", mostrar, false);
                
                agregar.onsuccess = function(e){
                    alert('La cita se ha asignado correctamente. ID de su cita: ' + numcita);
-                   location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+                   location.href="asignarOCancelar.html";
                };
                
                agregar.onerror = function(e) {
                alert('Usted no puede coger una cita a la misma hora');
-               location.href="http://localhost:8383/osavito07/asignarCita.html";
+               location.href="asignarCita.html";
                };
         }
         else
@@ -65,6 +65,7 @@ function agregarobjeto(){
         
 }
 
+/*
 function mostrar(){
 	
 	zonadatos.innerHTML="";
@@ -93,6 +94,7 @@ function mostrarDatos(e){
 	}
 
 }
+*/
 
 function mostrarSanitarios(){
     var cajadatos2 = document.getElementById('cajadatos2');
@@ -149,7 +151,7 @@ function guardarNumColegiado(){
       else {
           if(numColegiado==='-1'){
             alert('Usetd no tiene a ese tipo de sanitario asignado o ha escogido una cita con un(a) matron(a) siendo hombre'); 
-             location.href="http://localhost:8383/osavito07/asignarCita.html";
+             location.href="asignarCita.html";
          }
       }
     };

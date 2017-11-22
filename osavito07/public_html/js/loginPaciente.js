@@ -33,11 +33,11 @@ function login(){
       }
       else {
             if(existe){
-                location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+                location.href="asignarOCancelar.html";
             }
             else{
                alert("El usuario que has introducido no esta dado de alta en OsaVito07"); 
-               location.href="http://localhost:8383/osavito07/loginPaciente.html"; 
+               location.href="loginPaciente.html"; 
                sessionStorage.clear();
            }
       }

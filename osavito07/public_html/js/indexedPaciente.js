@@ -5,7 +5,7 @@ function iniciar(){
 	
 	boton=document.getElementById("btnalta");
 	
-	boton.addEventListener("click",agregarobjeto, false);
+	boton.addEventListener("click",comprobarFechaNac, false);
  
         var solicitud=indexedDB.open("OsaVito07", 2);
 	
@@ -41,42 +41,41 @@ function agregarobjeto(){
 	
 	var almacen=transaccion.objectStore("pacientes");
         
-        var valid = document.formDatos.checkValidity();
         var agregar;
         
-        if(valid){
                if(document.getElementById('hombre').checked){
 	       agregar=almacen.add({TIS: TIS, gnombre: gnombre, telefono: telefono, fecha: fecha, hombre: hombre});
-               agregar.addEventListener("success", mostrar, false);
+               //agregar.addEventListener("success", mostrar, false);
+               
+               agregar.onsuccess = function(e){
+                   alert('El paciente ha sido registrado correctamente');
+                   location.href="altaPacientes.html";
+               };
                
                agregar.onerror = function(e) {
-               alert(agregar.error.name + '\n\n' + agregar.error.message);
-               location.href="http://localhost:8383/osavito07/altaPacientes.html";
+               alert('El paciente que ha introducido ya existe en nuestra base de datos.');
+               location.href="altaPacientes.html";
                };
+               
                }
                else if(document.getElementById('mujer').checked){
                    agregar=almacen.add({TIS: TIS, gnombre: gnombre, telefono: telefono, fecha: fecha, mujer: mujer});
-                   agregar.addEventListener("success", mostrar, false);
-                   agregar.onerror = function(e) {
-                   alert(agregar.error.name + '\n\n' + agregar.error.message);
-                   location.href="http://localhost:8383/osavito07/altaPacientes.html";
+                   
+                   agregar.onsuccess = function(e){
+                   alert('El paciente ha sido registrado correctamente');
+                   location.href="altaPacientes.html";
+                   };
+                   
+               agregar.onerror = function(e) {
+               alert('El paciente que ha introducido ya existe en nuestra base de datos.');
+               location.href="altaPacientes.html";
                };
+               
                }   
-           }
              
-	document.getElementById("TIS").value="";
-	
-	document.getElementById("gnombre").value="";
-	
-	document.getElementById("telefono").value="";
-        
-        document.getElementById("fecha").value="";
-        
-        document.getElementById("hombre").value="";
-        
-        document.getElementById("mujer").value="";
 }
 
+/*
 function mostrar(){
 	
 	zonadatos.innerHTML="";
@@ -104,6 +103,36 @@ function mostrarDatos(e){
 		
 	}
 
+}*/
+
+function comprobarFechaNac(){
+    var fecha = document.getElementById("fecha");
+    var today = new Date();
+    var anyo = today.getFullYear();
+    var mes = today.getMonth() + 1;
+    var dia = today.getDate();
+    
+    if(dia<10) {
+        dia='0'+dia;
+    } 
+    if(mes<10) {
+       mes='0'+mes;
+    } 
+    var hoy = anyo + "-" + mes + "-" + dia;
+    
+    if(fecha.value < hoy){
+        var valido = document.formDatos.checkValidity();
+        if(valido){
+         agregarobjeto();
+        }
+        else{
+         alert('Algun dato introducido no es correcto'); 
+        }
+    }
+    else{
+        alert("Error en la fecha de nacimiento. La fecha introducida es posterior a hoy.");
+    }
+    
 }
 
 window.addEventListener("load", iniciar, false);

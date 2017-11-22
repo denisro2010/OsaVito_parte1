@@ -1,4 +1,5 @@
 var bd;
+window.addEventListener("load", iniciar, false);
 var existePac=false;
 var noMatrona=false;
 var hombre = false;
@@ -52,13 +53,15 @@ function agregarobjeto(){
         
         if(valid && existePac && (!hombre || (hombre && !(tiposanitario === '03')))){   
 	var agregar=almacen.add({TIS: TIS, numColegiado: numColegiado, tiposanitario: tiposanitario});
-        agregar.addEventListener("success", mostrar, false);
-         agregar.onerror = function(e) {
+        
+         agregar.onerror = function(e) { //esto viene con Indexed DB, por si hay claves repetidas
          alert('El paciente ya tiene asignado el tipo de sanitario que usted ha especificado');
-         location.href="http://localhost:8383/osavito07/asignarPacientes.html";
+         location.href="asignarPacientes.html";
          };
+         
          agregar.onsuccess = function(e) {
          alert('El paciente ha sido asignado correctamente');
+         location.href="asignarPacientes.html";
          };
         }
         else if(!existePac){
@@ -67,8 +70,13 @@ function agregarobjeto(){
         else if(hombre && (tiposanitario === '03')){
             alert('Un paciente hombre no puede tener asignado un(a) matron(a)');
         }
+        else if(!valid){
+            alert('Algun dato que ha introducido es incorrecto.');
+            location.href="asignarPacientes.html";
+        }
 }
 
+/*
 function mostrar(){
 	
 	zonadatos.innerHTML="";
@@ -96,7 +104,7 @@ function mostrarDatos(e){
 		
 	}
 
-}
+}*/
 
 function existePaciente(){
     if(existeMed){
@@ -157,7 +165,5 @@ function tipoSanitario(){
     };
 }
 
-
-window.addEventListener("load", iniciar, false);
 
 

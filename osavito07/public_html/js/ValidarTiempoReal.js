@@ -3,8 +3,8 @@ window.addEventListener("load", iniciar, false);
 function iniciar(){
     document.formDatos.addEventListener("invalid", validacion, true);
     document.formDatos.addEventListener("input", controlar, false);
-    document.getElementById("btnalta").addEventListener("click", comprobarFechaNac, false);
-    document.getElementById("btnloginpac").addEventListener("click", enviarLoginPaciente, false);
+    //document.getElementById("btnalta").addEventListener("click", comprobarFechaNac, false);
+    document.getElementById("btnloginpac").addEventListener("click", enviarLoginPaciente, false); //Valida el login del paciente al hacer click en el boton correspondiente
 }
 
 function validacion(e) {
@@ -25,23 +25,30 @@ function enviarLoginPaciente() {
     var elemento = document.getElementById("TIS");
     var fechanac = document.getElementById("fechanacpac");
     if (elemento.validity.valid && fechanac.validity.valid) {
-        location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+        location.href="asignarOCancelar.html";
     }else{
         alert('El TIS que has introducido no es correcto');
     }
  }
-
+ 
+ 
+/* NO HACEN FALTA, LA VALIDEZ YA SE COMPRUEBA CUANDO AÑADIMOS LOS DATOS A INDEXED DB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
+ 
+ 
+ 
 function enviarAltaSanitario() {
     var numcolegiado = document.getElementById("cnNumColegiado");
     var nombresanitario = document.getElementById("gnombre");
     
     if (numcolegiado.validity.valid && nombresanitario.validity.valid) {
-        location.href="http://localhost:8383/osavito07/altaSanitarios.html";
+        location.href="altaSanitarios.html";
     }else{
         alert('Algun dato introducido no es correcto');
     }
 }
 
+/* NO HACE FALTA, LA VALIDEZ YA SE COMPRUEBA CUANDO AÑADIMOS LOS DATOS A INDEXED DB
+ * 
 function enviarAltaPaciente() {
     var tis = document.getElementById("TIS");
     var tlf = document.getElementById("telefono");
@@ -52,22 +59,27 @@ function enviarAltaPaciente() {
     var caja = document.getElementById("caja2");
     
     if (tis.validity.valid && tlf.validity.valid && nombre.validity.valid && fechanac.validity.valid && (hombre.validity.valid || mujer.validity.valid)) {
-        location.href="http://localhost:8383/osavito07/altaPacientes.html";
+        location.href="altaPacientes.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }
 }
 
+
+/*
+ * NO HACE FALTA, LA VALIDEZ YA SE COMPRUEBA CUANDO AÑADIMOS LOS DATOS A INDEXED DB
+ 
 function enviarAsignarPaciente() {
     var tis = document.getElementById("TIS");
     var numcolegiado = document.getElementById("cnNumColegiado");
     
     if (tis.validity.valid && numcolegiado.validity.valid) {
-        location.href="http://localhost:8383/osavito07/asignarPacientes.html";
+        location.href="asignarPacientes.html";
     }else{
         alert('Algun dato introducido no es correcto');
     }
 }
+
 
 function enviarAsignarCita() {
 
@@ -76,7 +88,7 @@ function enviarAsignarCita() {
     
     if (fecha.validity.valid) {
         //alert('Su cita se ha asignado correctamente');
-       // location.href="http://localhost:8383/osavito07/index.html";
+       // location.href="index.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }
@@ -88,31 +100,10 @@ function enviarCancelarCita() {
     
     if (cita.validity.valid && tis.validity.valid) {
        // alert('Su cita se ha cancelado correctamente');
-       // location.href="http://localhost:8383/osavito07/asignarOCancelar.html";
+       // location.href="asignarOCancelar.html";
     }else{
         alert('Algun dato introducido no es correcto o se ha dejado en blanco');
     }
 }
-function comprobarFechaNac(){
-    var fecha = document.getElementById("fecha");
-    var today = new Date();
-    var anyo = today.getFullYear();
-    var mes = today.getMonth() + 1;
-    var dia = today.getDate();
-    
-    if(dia<10) {
-        dia='0'+dia;
-    } 
-    if(mes<10) {
-       mes='0'+mes;
-    } 
-    var hoy = anyo + "-" + mes + "-" + dia;
-    
-    if(fecha.value < hoy){
-        alert("La fecha es anterior a hoy.");
-    }
-    else{
-        alert("Error en la fecha de nacimiento. La fecha introducida es posterior a hoy.");
-    }
-    
-}
+
+*/

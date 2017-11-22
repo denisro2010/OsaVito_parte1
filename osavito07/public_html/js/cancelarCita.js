@@ -15,10 +15,6 @@ function iniciar(){
 		alert(solicitud.error.message);		
 	};
 	
-	/*solicitud.onupgradeneeded=function(e){
-		bd=e.target.result;
-		bd.createObjectStore("citas", {keyPath: ["tis", "fecha"]});
-	};*/
 }
 
 function cancelarCita(){
@@ -46,10 +42,14 @@ function cancelarCita(){
           }
       }
       else { //no more cursor
-          if(numCorrecto)
+          if(numCorrecto){
            alert('La cita se ha borrado');
-          else
+           location.href="asignarOCancelar.html";
+          }
+          else{
            alert('Su cita no se ha podido borrar porque el TIS o el codigo de la cita no son validos');
+           location.href="cancelarCita.html";
+          }
       }
     
     };

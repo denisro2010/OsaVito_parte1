@@ -17,15 +17,19 @@ function inicio(){
 function login(){
     var transaccion = bd.transaction(["pacientes"], "readonly");
     var objectStore = transaccion.objectStore("pacientes");
+    
+    var valido = document.formDatos.checkValidity();
+    
+    if(valido){
+    
     objectStore.openCursor().onsuccess = function(event) {
     var cursor = event.target.result;
     var existe = false;
-      
+    
       if (cursor) {
-          //alert('TIS: ' + cursor.value.TIS + ' fechanac: ' + cursor.value.fecha);
           if(cursor.value.TIS === document.getElementById("TIS").value && cursor.value.fecha === document.getElementById("fechanacpac").value){
-              //alert('TIS: ' + cursor.value.TIS + ' fechanac: ' + cursor.value.fecha);
               existe = true;
+              location.href="asignarOCancelar.html";
           }
           else{
           cursor.continue();
@@ -42,6 +46,12 @@ function login(){
            }
       }
     };
+    
+    } //fin valido
+    
+    else
+        alert('Algun dato es incorrecto o se ha dejado en blanco.');
+    
 }
 
 

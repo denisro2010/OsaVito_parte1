@@ -4,7 +4,7 @@ function iniciar(){
     document.formDatos.addEventListener("invalid", validacion, true);
     document.formDatos.addEventListener("input", controlar, false);
     //document.getElementById("btnalta").addEventListener("click", comprobarFechaNac, false);
-    document.getElementById("btnloginpac").addEventListener("click", enviarLoginPaciente, false); //Valida el login del paciente al hacer click en el boton correspondiente
+    //document.getElementById("btnloginpac").addEventListener("click", enviarLoginPaciente, false); //Valida el login del paciente al hacer click en el boton correspondiente
 }
 
 function validacion(e) {
@@ -21,16 +21,17 @@ function controlar(e) {
     }
 }
 
+/*
 function enviarLoginPaciente() {
     var elemento = document.getElementById("TIS");
     var fechanac = document.getElementById("fechanacpac");
     if (elemento.validity.valid && fechanac.validity.valid) {
-        location.href="asignarOCancelar.html";
+       // location.href="asignarOCancelar.html";
     }else{
         alert('El TIS que has introducido no es correcto');
     }
  }
- 
+ */
  
 /* NO HACEN FALTA, LA VALIDEZ YA SE COMPRUEBA CUANDO AÑADIMOS LOS DATOS A INDEXED DB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
  

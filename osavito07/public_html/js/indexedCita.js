@@ -1,10 +1,13 @@
-// JavaScript Document
 var bd;
+var numColegiado = '-1';
+window.addEventListener("load", iniciar, false);
+
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
 	boton=document.getElementById("btnalta");
-	boton.addEventListener("click",guardarNumColegiado, false);
+	boton.addEventListener("click",comprobarFechaCita, false);
+        //boton.addEventListener("click",guardarNumColegiado, false);
         
         boton2 = document.getElementById("btnsanitarios");
 	boton2.addEventListener("mousemove",mostrarSanitarios, false);
@@ -23,7 +26,7 @@ function iniciar(){
 	
 	solicitud.onupgradeneeded=function(e){
 		bd=e.target.result;
-		bd.createObjectStore("citas", {keyPath: ["tis", "fecha"]});
+		bd.createObjectStore("citas", {keyPath: ["tis", "fechaCita", "horaCita"]});
 	};	
 }
       
@@ -35,7 +38,9 @@ function agregarobjeto(){
         
         var numcita = Math.floor((Math.random() * 1000000) + 1);
         
-        var fecha=document.getElementById("tiempolocal").value;
+        var fechaCita=document.getElementById("fechaCita").value;
+        
+        var horaCita=document.getElementById("horaCita").value;
         
         var tiposanitario=document.getElementById("tiposanitario").value;
 	
@@ -46,7 +51,7 @@ function agregarobjeto(){
         var valid = document.formDatos.checkValidity();
         
         if(valid){
-	       var agregar=almacen.add({numcita: numcita, tis: tis, fecha: fecha, tiposanitario: tiposanitario, numColegiado: numColegiado});
+	       var agregar=almacen.add({numcita: numcita, tis: tis, fechaCita: fechaCita, horaCita: horaCita, tiposanitario: tiposanitario, numColegiado: numColegiado});
                //agregar.addEventListener("success", mostrar, false);
                
                agregar.onsuccess = function(e){
@@ -157,8 +162,76 @@ function guardarNumColegiado(){
     };
 }
 
+function comprobarFechaCita(){
+    var fecha = document.getElementById("fechaCita");
+    var reloj = document.getElementById("horaCita");
+    var today = new Date();
+    
+    //ver que dia de la semana ha escogido el usuario para controlar que no se cojan citas los fines de semana
+    var elegido = new Date(fecha.value);
+    var numDiaElegido = elegido.getDay();
+    
+    var anyo = today.getFullYear();
+    var mes = today.getMonth()+1;
+    var dia = today.getDate();
+    var hora = today.getHours();
+    var min = today.getMinutes();
 
-var numColegiado = '-1';
-window.addEventListener("load", iniciar, false);
+    if(min<10){
+        min='0'+min;
+    }
+    
+    if(hora<10){
+        hora='0'+hora;
+    }
+    
+    if(dia<10) {
+        dia='0'+dia;
+    } 
+
+    if(mes<10) {
+       mes='0'+mes;
+    } 
+
+    var hoy = anyo + "-" + mes + "-" + dia;
+    var relojActual = hora + ":" + min;
+    var valido = document.formDatos.checkValidity();
+    
+    if(valido){
+       
+    if(fecha.value < hoy){
+            alert("La fecha introducida es incorrecta.");
+            location.href="asignarCita.html";
+    }
+    else if(fecha.value === hoy){
+        if(reloj.value <= relojActual){
+            alert("La hora introducida es incorrecta.");
+            location.href="asignarCita.html";
+        }
+        else if(today.getDay() === '6' || today.getDay() === '0'){
+            alert('Usted no puede coger una cita un fin de semana');
+            location.href="asignarCita.html";
+        }
+        else{
+            guardarNumColegiado();
+        }
+    }
+    else{
+        if(numDiaElegido === 6 || numDiaElegido === 0){
+        alert('Usted no puede coger una cita un fin de semana');
+        location.href="asignarCita.html";
+        }
+        else{
+         guardarNumColegiado();
+        }
+    } 
+}
+    else{ //si el formulario no es valido
+        alert('Algun dato introducido no es correcto o se ha dejado en blanco.');
+        location.href="asignarCita.html";
+    }
+    
+} //fin function
+
 
 

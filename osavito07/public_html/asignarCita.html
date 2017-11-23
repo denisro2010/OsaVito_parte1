@@ -27,6 +27,9 @@
         <script 
             type="text/javascript" src="js/indexedCita.js">
         </script>
+        <script 
+            type="text/javascript" src="js/comprobarFechasCitas.js">
+        </script>
         
 </head>
 <body>
@@ -137,7 +140,8 @@
                                     </section>
                                     
                                     <p>Fecha y hora de la cita: <br />
-                                        <input type="datetime-local" name="tiempolocal" id="tiempolocal" step="900" required/>
+                                        <input type="date" name="fechita" id="fechita" required/>
+                                        <input type="time" name="horita" id="horita" min="09:15" max="10:00" step="900" required/>
                                         <!-- dentro del input se podría poner max y min para definir la hora minima o maxima permitidas
                                         step="900" para pasar de 15 en 15 minutos
                                         
